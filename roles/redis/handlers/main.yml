@@ -1,0 +1,3 @@
+---
+- name: Restart redis
+  command: brew services restart redis

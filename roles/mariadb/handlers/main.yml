@@ -1,0 +1,3 @@
+---
+- name: Restart mariadb
+  command: brew services start mariadb

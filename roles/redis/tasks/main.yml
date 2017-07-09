@@ -1,0 +1,8 @@
+---
+- name: Install redis
+  homebrew: name=redis state=latest
+  notify: Restart redis
+
+- name: Bind to 0.0.0.0
+  replace: dest=/usr/local/etc/redis.conf regexp="^bind 127.0.0.1 ::1" replace="bind 0.0.0.0"
+  notify: Restart redis

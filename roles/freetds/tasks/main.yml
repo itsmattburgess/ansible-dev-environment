@@ -1,0 +1,15 @@
+---
+- name: Install freetds
+  homebrew: name=freetds state=latest
+
+- name: Enable pdo-dblib php package
+  homebrew: name=php70-pdo-dblib
+  notify: restart php-fpm
+
+- name: Add tds config
+  blockinfile:
+    dest: /usr/local/etc/freetds.conf
+    block: |
+      [ccps_mssql]
+      host=127.0.0.1
+      port=1433

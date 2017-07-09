@@ -1,0 +1,5 @@
+---
+- name: Restart apache
+  command: brew services restart httpd24
+  become: true
+  become_user: "root"

@@ -1,0 +1,46 @@
+---
+- name: Tap php7
+  homebrew_tap: name=homebrew/php state=present
+
+- name: Install php7.0
+  homebrew: name=php70 state=latest
+  notify: Restart php-fpm
+
+- name: Set timezone
+  lineinfile: dest=/usr/local/etc/php/7.0/php-fpm.d/www.conf line="php_admin_value[date.timezone] = UTC"
+  notify: Restart php-fpm
+
+- name: Set memory limit
+  lineinfile: dest=/usr/local/etc/php/7.0/php-fpm.d/www.conf line="php_admin_value[memory_limit] = 512M"
+  notify: Restart php-fpm
+
+- name: Set input vars
+  lineinfile: dest=/usr/local/etc/php/7.0/php-fpm.d/www.conf line="php_admin_value[max_input_vars] = 2000"
+  notify: Restart php-fpm
+
+- name: Enable xdebug package
+  homebrew: name=php70-xdebug state=latest
+  notify: Restart php-fpm
+
+- name: Enable amqp package
+  homebrew: name=php70-amqp state=latest
+  notify: Restart php-fpm
+
+- name: Enable pspell package
+  homebrew: name=php70-pspell state=latest
+  notify: Restart php-fpm
+
+- name: Enable imagick package
+  homebrew: name=php70-imagick state=latest
+  notify: Restart php-fpm
+
+- name: Enable mcrypt package
+  homebrew: name=php70-mcrypt state=latest
+  notify: Restart php-fpm
+
+- name: Tap homebrew-custom for php packages
+  homebrew_tap: name=jenssegers/homebrew-custom state=present
+
+- name: Enable zmq package
+  homebrew: name=php70-zmq state=head
+  notify: Restart php-fpm

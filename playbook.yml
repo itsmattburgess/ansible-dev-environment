@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  roles:
+    - apache24
+    - dnsmasq
+    - php70
+    - redis
+    - freetds
+    - rabbitmq
+    - mariadb
+    - utils

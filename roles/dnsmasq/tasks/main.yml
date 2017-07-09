@@ -1,0 +1,14 @@
+---
+- name: Install dnsmaq
+  homebrew: name=dnsmasq state=latest update_homebrew=yes
+  notify: Start dnsmasq
+
+- name: Alias .dev TLDs to localhost
+  lineinfile: path=/usr/local/etc/dnsmasq.conf line="address=/.dev/127.0.0.1" create=yes state=present
+  notify: Start dnsmasq
+
+- name: Create a dns resolver for the dev domain
+  lineinfile: path=/etc/resolver/dev line="nameserver 127.0.0.1" create=yes state=present
+  become: true
+  become_user: "root"
+  notify: Start dnsmasq

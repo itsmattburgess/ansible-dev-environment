@@ -1,0 +1,5 @@
+---
+- name: Start dnsmasq
+  command: brew services start dnsmasq
+  become: true
+  become_user: "root"
