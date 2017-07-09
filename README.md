@@ -7,6 +7,9 @@ This repository uses ansible to configure my local development environment to th
 - RabbitMQ
 - Other utilities (freetds, composer, supervisor etc)
 
+## Running ansible
+Run the following command to get ansible working away: ```ansible-playbook playbook.yml -i hosts --ask-become-pass```
+
 ## Apache configuration
 I have configured Apache to run a VirtualDocumentRoot virtual host. To host a new site you should place the site directory (or symlink to the public directory) in your ``~/Sites/`` directory. Dnsmasq is installed and configured to catch all ```*.dev``` domains and pass the requests to the local Apache server using the name of your directory.
 
