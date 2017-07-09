@@ -9,3 +9,5 @@
     - rabbitmq
     - mariadb
     - utils
+  vars:
+    ansible_user: matt
