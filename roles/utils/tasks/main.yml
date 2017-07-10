@@ -18,4 +18,4 @@
   homebrew: name=composer state=latest
 
 - name: Install SASS
-  homebrew: name=sass state=latest
+  gem: name=sass state=latest
