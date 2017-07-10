@@ -16,3 +16,6 @@
 
 - name: Install composer
   homebrew: name=composer state=latest
+
+- name: Install SASS
+  homebrew: name=sass state=latest
