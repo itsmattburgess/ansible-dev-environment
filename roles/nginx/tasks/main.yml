@@ -1,0 +1,9 @@
+---
+- name: Install nginx
+  apt: name=nginx state=latest
+
+- name: Enable .dev domains handling
+  template:
+    src: nginx.conf.j2
+    dest: /usr/local/etc/nginx/nginx.conf
+    notify: Restart nginx
