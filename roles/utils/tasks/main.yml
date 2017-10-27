@@ -5,12 +5,6 @@
 - name: Install ghostscript
   homebrew: name=ghostscript state=latest
 
-- name: Install poppler
-  homebrew: name=poppler state=latest
-
-- name: Install zmq
-  homebrew: name=zmq state=latest
-
 - name: Install supervisor
   homebrew: name=supervisord state=latest
 
