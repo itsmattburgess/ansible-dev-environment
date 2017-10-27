@@ -1,3 +1,0 @@
----
-- name: Restart rabbitmq
-  command: brew services restart rabbitmq

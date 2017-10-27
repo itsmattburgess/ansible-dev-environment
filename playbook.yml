@@ -5,7 +5,6 @@
     - dnsmasq
     - php70
     - redis
-    - rabbitmq
     - mariadb
     - utils
   vars:
