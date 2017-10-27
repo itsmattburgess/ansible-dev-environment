@@ -1,4 +1,4 @@
-handlers:
-  - name: Restart nginx
-    become: yes
-    command: brew services restart nginx
+---
+- name: Restart nginx
+  become: yes
+  command: brew services restart nginx

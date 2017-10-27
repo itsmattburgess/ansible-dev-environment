@@ -1,9 +1,23 @@
 ---
 - name: Install nginx
-  apt: name=nginx state=latest
+  homebrew: name=nginx state=latest
+
+- name: Create config directory
+  file: path=/Users/{{ ansible_user }}/.env/config state=directory
+
+- name: Create logs directory
+  file: path=/Users/{{ ansible_user }}/.env/logs state=directory
+
+- name: Check for ssl certificate existance
+  stat: path=/Users/{{ ansible_user }}/.env/config/server.crt
+  register: ssl_certificate_exists
+
+- name: Generate SSL certficate and key
+  command: openssl req -new -newkey rsa:2048 -x509 -nodes -days 365 -subj "/C=US/ST=Rhode Island/L=Quahog/O=Development/OU=Local/CN=*.dev" -keyout /Users/{{ ansible_user }}/.env/config/server.key -out /Users/{{ ansible_user }}/.env/config/server.crt
+  when: ssl_certificate_exists.stat.exists == false
 
 - name: Enable .dev domains handling
   template:
     src: nginx.conf.j2
     dest: /usr/local/etc/nginx/nginx.conf
-    notify: Restart nginx
+  notify: Restart nginx
