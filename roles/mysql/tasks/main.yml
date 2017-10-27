@@ -1,7 +1,7 @@
 ---
-- name: Install mariadb
-  homebrew: name=mariadb state=latest
-  notify: Restart mariadb
+- name: Install mysql
+  homebrew: name=mysql state=latest
+  notify: Restart mysql
 
 - name: Set utc timezone
   blockinfile:
@@ -9,4 +9,4 @@
     block: |
       [mysqld]
       default_time_zone=+0:00
-  notify: Restart mariadb
+  notify: Restart mysql

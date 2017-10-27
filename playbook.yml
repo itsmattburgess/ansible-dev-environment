@@ -5,7 +5,7 @@
     - dnsmasq
     - php
     - redis
-    - mariadb
+    - mysql
     - utils
   vars:
     ansible_user: matt
