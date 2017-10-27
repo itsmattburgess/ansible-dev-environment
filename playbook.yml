@@ -3,7 +3,7 @@
   roles:
     - nginx
     - dnsmasq
-    - php70
+    - php
     - redis
     - mariadb
     - utils

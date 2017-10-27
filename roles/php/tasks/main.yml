@@ -1,0 +1,27 @@
+---
+- name: Tap php7
+  homebrew_tap: name=homebrew/php state=present
+
+- name: Install php
+  homebrew: name=php71 state=latest
+  notify: Restart php
+
+- name: Set timezone
+  lineinfile: dest=/usr/local/etc/php/7.1/php-fpm.d/www.conf line="php_admin_value[date.timezone] = UTC"
+  notify: Restart php
+
+- name: Set memory limit
+  lineinfile: dest=/usr/local/etc/php/7.1/php-fpm.d/www.conf line="php_admin_value[memory_limit] = 512M"
+  notify: Restart php
+
+- name: Enable xdebug package
+  homebrew: name=php71-xdebug state=latest
+  notify: Restart php
+
+- name: Enable imagick package
+  homebrew: name=php71-imagick state=latest
+  notify: Restart php
+
+- name: Enable mcrypt package
+  homebrew: name=php71-mcrypt state=latest
+  notify: Restart php

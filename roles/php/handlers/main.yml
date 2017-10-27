@@ -1,0 +1,3 @@
+---
+- name: Restart php
+  command: brew services restart php71
